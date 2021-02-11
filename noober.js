@@ -69,5 +69,24 @@ function renderRides(ridesArray) {
 
 window.addEventListener('DOMContentLoaded', function() {
   // YOUR CODE
+
+  let allRidesButton = document.querySelector('#all-filter') // find all Rides button using querySelectorAll and a selector matching all of the desired elements
+  allRidesButton.addEventListener('click',async function(event){  // add the event listener and function
+    event.preventDefault()  // supress the browser's default click behavior
+    console.log('Show All Rides')
+    let response = await fetch('https://kiei451.com/api/rides.json')
+    let ridesArray = await response.json()    // find the array within the data
+
+    document.querySelector('.rides').innerHTML = '' // clearing any existing forecast html from a previous click
+    console.dir(ridesArray)
+    renderRides(ridesArray)
+  })
+
+
+
+
+
+
+
 })
 
