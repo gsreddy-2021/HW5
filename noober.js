@@ -70,23 +70,72 @@ function renderRides(ridesArray) {
 window.addEventListener('DOMContentLoaded', function() {
   // YOUR CODE
 
+  //very similar to class 5 workalong (for future reference if I have doubts)
+
   let allRidesButton = document.querySelector('#all-filter') // find all Rides button using querySelectorAll and a selector matching all of the desired elements
   allRidesButton.addEventListener('click',async function(event){  // add the event listener and function
     event.preventDefault()  // supress the browser's default click behavior
     console.log('Show All Rides')
     let response = await fetch('https://kiei451.com/api/rides.json')
     let ridesArray = await response.json()    // find the array within the data
-
+    
     document.querySelector('.rides').innerHTML = '' // clearing any existing forecast html from a previous click
-    console.dir(ridesArray)
     renderRides(ridesArray)
   })
 
+  //Repeat above logic for other buttons with a 'for' loop
+  let nooberPoolButton = document.querySelector('#noober-pool-filter') 
+  nooberPoolButton.addEventListener('click',async function(event){  // add the event listener and function
+    event.preventDefault()  // supress the browser's default click behavior
+    console.log('Show Noober Pool Rides')
+    let response = await fetch('https://kiei451.com/api/rides.json')
+    let ridesArray = await response.json()    // find the array within the data
+    let newArray = []
 
+    // looping through the array
+    for (let i = 0; i < ridesArray.length; i++) {
+      let j = levelOfService(ridesArray[i])
+      if ( j == 'Noober Pool') {
+        newArray.push(ridesArray[i])
+        }
+      // console.log(j)
+      }
+    document.querySelector('.rides').innerHTML = '' // clearing any existing forecast html from a previous click
+    renderRides(ridesArray)
+  })
 
+  let nooberPurpleButton = document.querySelector('#noober-purple-filter') 
+  nooberPurpleButton.addEventListener('click',async function(event){  // add the event listener and function
+    event.preventDefault()  // supress the browser's default click behavior
+    console.log('Show Noober Purple Rides')
+    let response = await fetch('https://kiei451.com/api/rides.json')
+    let ridesArray = await response.json()    // find the array within the data
 
+    document.querySelector('.rides').innerHTML = '' // clearing any existing forecast html from a previous click
+    renderRides(ridesArray)
+  })
 
+  let nooberXLButton = document.querySelector('#noober-xl-filter') 
+  nooberXLButton.addEventListener('click',async function(event){  // add the event listener and function
+    event.preventDefault()  // supress the browser's default click behavior
+    console.log('Show Noober XL Rides')
+    let response = await fetch('https://kiei451.com/api/rides.json')
+    let ridesArray = await response.json()    // find the array within the data
 
+    document.querySelector('.rides').innerHTML = '' // clearing any existing forecast html from a previous click
+    renderRides(ridesArray)
+  })
+
+  let nooberXButton = document.querySelector('#noober-x-filter') 
+  nooberXButton.addEventListener('click',async function(event){  // add the event listener and function
+    event.preventDefault()  // supress the browser's default click behavior
+    console.log('Show Noober X Rides')
+    let response = await fetch('https://kiei451.com/api/rides.json')
+    let ridesArray = await response.json()    // find the array within the data
+
+    document.querySelector('.rides').innerHTML = '' // clearing any existing forecast html from a previous click
+    renderRides(ridesArray)
+  })
 
 })
 
